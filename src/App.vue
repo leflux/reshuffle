@@ -22,7 +22,9 @@
     </section>
     <!-- result section -->
     <section class="result">
-      
+      <div class="item" v-for="(item, i) in result" :key="i" :style="{ backgroundImage: 'url(' + require(`@/assets/${item}.jpg`) + ')' }">
+        Preview {{ i+1 }}
+      </div>
     </section>
   </div>
 </template>
@@ -43,7 +45,7 @@ export default {
         starring: 'Starring Will Smith, Arnold Schwarzenegger, Denzel Washington',
         genre: 'Genre: Action, Thriller'
       },
-      result: []
+      result: ['preview1', 'preview2', 'preview3']
     }
   }
 }
@@ -116,9 +118,20 @@ body, html {
   width: 25vw;
   padding: 1em;
 }
+.action .search input::placeholder {
+  color: var(--c-text-normal);
+}
 /* result section */
 .result {
   height: 35vh;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+}
+.result .item {
+  flex-grow: 1;
+  background-size: cover;
+  background-position: center center;
 }
 
 </style>
