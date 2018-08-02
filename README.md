@@ -17,7 +17,7 @@ A web app providing a new video browsing experience for video libraries. This we
     yarn
     ```
 
-3. Either start the development server with hot reload at localhost:8080 ...
+3. Either start the development server with hot reload at `localhost:8080` ...
 
     ```bash
     yarn serve
@@ -28,4 +28,3 @@ A web app providing a new video browsing experience for video libraries. This we
     ```bash
     yarn build
     ```
-
