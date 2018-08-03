@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- feature section -->
-    <section class="feature">
+    <section class="feature" :style="{ backgroundImage: 'url(' + require(`@/assets/${feature.image}`) + ')' }">
       <div class="info">
-        <h1>{{ feature.heading }}</h1>
+        <h1>{{ feature.title }}</h1>
         <div class="description">
           <p>{{ feature.description }}</p>
           <p>{{ feature.starring }}</p>
@@ -22,8 +22,8 @@
     </section>
     <!-- result section -->
     <section class="result">
-      <div class="item" v-for="(item, i) in result" :key="i" :style="{ backgroundImage: 'url(' + require(`@/assets/${item}.jpg`) + ')' }">
-        Preview {{ i+1 }}
+      <div class="item" v-for="(item, i) in result" :key="i" :style="{ backgroundImage: 'url(' + require(`@/assets/${item.image}`) + ')' }">
+        {{ item.title }}
       </div>
     </section>
   </div>
@@ -40,12 +40,35 @@ export default {
   data () {
     return {
       feature: {
-        heading: 'The Yellow Storm',
+        title: 'The Yellow Storm',
         description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
         starring: 'Starring Will Smith, Arnold Schwarzenegger, Denzel Washington',
-        genre: 'Genre: Action, Thriller'
+        genre: 'Genre: Action, Thriller',
+        image: 'example-title.jpg'
       },
-      result: ['preview1', 'preview2', 'preview3']
+      result: [
+        {
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat',
+          starring: 'Random Girl, Shuffle Dude',
+          genre: 'Mystery, Horror',
+          image: 'preview1.jpg',
+        }, 
+        {
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat',
+          starring: 'Random Girl, Shuffle Dude',
+          genre: 'Romantic, Family',
+          image: 'preview2.jpg',
+        }, 
+        {
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat',
+          starring: 'Random Girl, Shuffle Dude',
+          genre: 'Action, Thriller',
+          image: 'preview3.jpg',
+        }
+      ]
     }
   }
 }
@@ -74,7 +97,6 @@ body, html {
 }
 /* feature section */
 .feature {
-  background: url('./assets/example-title.jpg');
   background-size: cover;
   background-position: center center;
   height: 50vh;
