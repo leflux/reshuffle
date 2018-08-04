@@ -6,8 +6,8 @@
         <h1>{{ feature.title }}</h1>
         <div class="description">
           <p>{{ feature.description }}</p>
-          <p>{{ feature.starring }}</p>
-          <p>{{ feature.genre }}</p>
+          <p>Starring {{ feature.starring.join(', ') }}</p>
+          <p>Genre: {{ feature.genre.join(', ') }}</p>
         </div>
       </div>
     </section>
@@ -23,7 +23,14 @@
     <!-- result section -->
     <section class="result">
       <div class="item" v-for="(item, i) in result" :key="i" :style="{ backgroundImage: 'url(' + require(`@/assets/${item.image}`) + ')' }">
-        {{ item.title }}
+        <div class="info">
+          <h1>{{ item.title }}</h1>
+          <div class="description">
+            <p>{{ item.description }}</p>
+            <p>Starring {{ item.starring.join(', ') }}</p>
+            <p>Genre: {{ item.genre.join(', ') }}</p>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -42,30 +49,30 @@ export default {
       feature: {
         title: 'The Yellow Storm',
         description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-        starring: 'Starring Will Smith, Arnold Schwarzenegger, Denzel Washington',
-        genre: 'Genre: Action, Thriller',
+        starring: ['Will Smith', 'Arnold Schwarzenegger', 'Denzel Washington'],
+        genre: ['Action', 'Thriller'],
         image: 'example-title.jpg'
       },
       result: [
         {
           title: 'Lorem Ipsum',
           description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat',
-          starring: 'Random Girl, Shuffle Dude',
-          genre: 'Mystery, Horror',
+          starring: ['Random Girl', 'Shuffle Dude'],
+          genre: ['Mystery', 'Horror'],
           image: 'preview1.jpg',
         }, 
         {
           title: 'Lorem Ipsum',
           description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat',
-          starring: 'Random Girl, Shuffle Dude',
-          genre: 'Romantic, Family',
+          starring: ['Random Girl', 'Shuffle Dude'],
+          genre: ['Romantic', 'Family'],
           image: 'preview2.jpg',
         }, 
         {
           title: 'Lorem Ipsum',
           description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat',
-          starring: 'Random Girl, Shuffle Dude',
-          genre: 'Action, Thriller',
+          starring: ['Random Girl', 'Shuffle Dude'],
+          genre: ['Action', 'Thriller'],
           image: 'preview3.jpg',
         }
       ]
