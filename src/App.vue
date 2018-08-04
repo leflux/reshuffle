@@ -24,7 +24,7 @@
     <section class="result">
       <div class="item" v-for="(item, i) in result" :key="i" :style="{ backgroundImage: 'url(' + require(`@/assets/${item.image}`) + ')' }">
         <div class="info">
-          <h1>{{ item.title }}</h1>
+          <h2>{{ item.title }}</h2>
           <div class="description">
             <p>{{ item.description }}</p>
             <p>Starring {{ item.starring.join(', ') }}</p>
@@ -161,6 +161,18 @@ body, html {
   flex-grow: 1;
   background-size: cover;
   background-position: center center;
+}
+.result .item h2 {
+  font-size: 2em;
+  margin: 0 0 .5em 0;
+}
+.result .item .info {
+  width: 75%;
+  height: 35vh;
+  padding: 3em 15% 2em 4em;
+  box-sizing: border-box;
+  background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+  color: white;
 }
 
 </style>
