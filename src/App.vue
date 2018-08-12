@@ -14,7 +14,7 @@
     <!-- action bar with shuffle and search -->
     <section class="action">
       <div class="shuffle">
-        <button>Shuffle</button>
+        <button @click="shuffle">Shuffle</button>
       </div>
       <div class="search">
         <input type="text" placeholder="Search" />
@@ -22,7 +22,7 @@
     </section>
     <!-- result section -->
     <section class="result">
-      <div class="item" v-for="(item, i) in result" :key="i" :style="{ backgroundImage: 'url(' + require(`@/assets/${item.image}`) + ')' }">
+      <div class="item" v-for="(item, i) in shuffledResult" :key="i" :style="{ backgroundImage: 'url(' + require(`@/assets/${item.image}`) + ')' }">
         <div class="info">
           <h2>{{ item.title }}</h2>
           <div class="description">
@@ -77,6 +77,24 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    shuffle () {
+      this.result = this.shuffledResult
+    }
+  },
+  computed: {
+    shuffledResult () {
+      var j, x, i
+      var a = [].concat(this.result)
+      for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1))
+        x = a[i]
+        a[i] = a[j]
+        a[j] = x
+      }
+      return a
+    }
   }
 }
 </script>
@@ -107,6 +125,7 @@ body, html {
   background-size: cover;
   background-position: center center;
   height: 50vh;
+  overflow: hidden;
 }
 .feature h1 {
   font-size: 3em;
@@ -161,6 +180,7 @@ body, html {
   flex-grow: 1;
   background-size: cover;
   background-position: center center;
+  overflow: hidden;
 }
 .result .item h2 {
   font-size: 2em;
