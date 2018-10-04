@@ -41,5 +41,13 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "vue": {
+    "baseUrl": ""
+  },
+  "babel": {
+    "presets": [
+      "@vue/app"
+    ]
+  }
 }
