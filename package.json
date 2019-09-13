@@ -43,7 +43,7 @@
     "not ie <= 8"
   ],
   "vue": {
-    "baseUrl": ""
+    "publicPath": ""
   },
   "babel": {
     "presets": [
